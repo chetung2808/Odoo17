@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="action_estate" model="ir.actions.act_window">
+			<field name="name">Estate Properties</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">estate</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<record id="action_estate_mail" model="ir.actions.act_window">
+			<field name="name">Estate Mail</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">mail.thread</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<record id="view_estate_search" model="ir.ui.view">
+			<field name="name">estate.search</field>
+			<field name="model">estate</field>
+			<field name="arch" type="xml">
+				<search string="Tests">
+					<field name="name"/>
+					<field name="availability_date"/>
+				</search>
+			</field>
+		</record>
+		<record id="view_estate_tree" model="ir.ui.view">
+			<field name="name">estate.tree</field>
+			<field name="model">estate</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="partner_id"/>
+					<field name="nums_of_beth" class="mb16"/>
+					<field name="living_area" class="mb16"/>
+					<field name="garden_area" class="mb16"/>
+					<field name="total_area" class="mb16"/>
+					<field name="availability_date" widget="datetime"/>
+					<field name="state" class="mb16" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_estate_form" model="ir.ui.view">
+			<field name="name">estate.form</field>
+			<field name="model">estate</field>
+			<field name="arch" type="xml">
+				<form string="Estate Property">
+					<sheet>
+					<header>
+							<field name="state" class="mb16" widget="statusbar" options="{'clickable':1}"/>		 
+						
+					</header>
+						<group>
+							<group invisible="state == 'sold'">
+								<button name="ac_sold" type="object" string="Sold" class="oe_highlight"/>
+							</group>
+							<group invisible="state == 'canceled'">
+								<button name="ac_canceled" type="object" string="Cancel"/>
+							</group>
+							
+						</group>
+						<group>
+								<group>
+									<field name="name" class="mb16"/>
+								</group>
+								<group>
+									<field name="partner_id" class="mb16"/>
+								</group>
+						</group>
+
+						<group>
+								<group>
+									<field name="number_of_months" class="mb16"/>
+								</group>
+								<group>
+									<field name="user_id" class="mb16"/>
+								</group>
+						</group>
+
+						<group>
+								<group>
+									<field name="living_area" class="mb16"/>
+								</group>
+								<group>
+									<field name="garden_area" class="mb16"/>
+								</group>
+
+								<group>
+									<field name="total_area" class="mb16"/>
+								</group>
+
+								<field name="state"/>
+						</group>
+						
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				</form>
+			</field>
+		</record>
+		<!-- <menuitem id="test_menu_root"
+              name="Estate" 
+              sequence="1"
+              web_icon="test,static/description/icon.png"/>
+		<menuitem id="test_first_level_menu"
+              name="One Level"
+              parent="test_menu_root"/>
+		<menuitem id="test_model_menu_action"
+              name="Estate Properties"
+              parent="test_first_level_menu"
+              action="action_estate"/>
+		<menuitem id="estate_mail_menu"
+              name="Estate Mail"
+              parent="test_menu_root"
+          />
+		<menuitem id="estate_mail_menu2"
+              name="Estate 1"
+              parent="test_first_level_menu"
+              sequence="2"
+              action="action_offer"/> -->
+	</data>
+</odoo>

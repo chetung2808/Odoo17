@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="estate_template">
+        <div>
+            <h3>This is a Demo</h3>
+        </div>
+    </template>
+</odoo>

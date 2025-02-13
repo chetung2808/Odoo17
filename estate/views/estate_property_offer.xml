@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Action -->
+        <record id="action_offer" model="ir.actions.act_window">
+            <field name="name">Estate Property Offers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">estate.property.offer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_offer_form" model="ir.ui.view">
+            <field name="name">estate.property.offer.form</field>
+            <field name="model">estate.property.offer</field>
+            <field name="arch" type="xml">
+                <form string="Offer Property">
+                    <header>
+                            <group>
+                            <group>
+                                <button name="ac_refuse" type="object"  class="oe_highlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-wheelchair" viewBox="0 0 16 16">
+                                        <path d="M12 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.663 2.146a1.5 1.5 0 0 0-.47-2.115l-2.5-1.508a1.5 1.5 0 0 0-1.676.086l-2.329 1.75a.866.866 0 0 0 1.051 1.375L7.361 3.37l.922.71-2.038 2.445A4.73 4.73 0 0 0 2.628 7.67l1.064 1.065a3.25 3.25 0 0 1 4.574 4.574l1.064 1.063a4.73 4.73 0 0 0 1.09-3.998l1.043-.292-.187 2.991a.872.872 0 1 0 1.741.098l.206-4.121A1 1 0 0 0 12.224 8h-2.79zM3.023 9.48a3.25 3.25 0 0 0 4.496 4.496l1.077 1.077a4.75 4.75 0 0 1-6.65-6.65z"/>
+                                    </svg>                          
+                                    Refuse
+                                </button>
+                            </group>
+                        
+                            <group>
+                                <button name="ac_accept" type="object" class="oe_highlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>
+                                    Accept
+                                </button>
+                                
+                            </group>
+
+                        </group>
+                    </header>
+                    <sheet>
+                        
+
+
+                        <group>
+                            <field name="validity"/>
+                            <field name="date_deadline"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_offer_tree" model="ir.ui.view">
+            <field name="name">estate.property.offer.tree</field>
+            <field name="model">estate.property.offer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="validity"/>
+                    <field name="date_deadline"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_estate_mail" model="ir.actions.act_window">
+            <field name="name">Estate Mail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mail.thread</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_users" model="ir.actions.act_window">
+            <field name="name">Res Users</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_users_form" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <form string="Users Property">
+                    <sheet>
+                        <group>
+                            <field name="property_ids">
+                                
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Form View -->
+        <record id="kanban_estate_view" model="ir.ui.view">
+            <field name="name">kanban.estate.view</field>
+            <field name="model">estate</field>
+            <field name="arch" type="xml">
+
+                <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <div><strong>Name: </strong><field name="name"/></div>
+                            <div><strong>Living Area: </strong><field name="living_area"/></div>
+                            <div><strong>Garden Area: </strong><field name="garden_area"/></div>
+                            <div><strong>Total Area: </strong><field name="total_area"/></div>
+                            <div><strong>Partner: </strong><field name="partner_id"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+                
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_users_tree" model="ir.ui.view">
+            <field name="name">res.users.tree</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="property_ids"/>
+                </tree>
+            </field>
+        </record>
+
+
+         <!-- Action -->
+        <record id="action_kanban_estate" model="ir.actions.act_window">
+            <field name="name">kanban Estate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">estate</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+
+        <!-- Menu Items -->
+        <menuitem id="test_menu_root"
+                  name="Estate"
+                  web_icon="test,static/description/icon.png"/>
+
+        <menuitem id="test_first_level_menu"
+                  name="Estate "
+                  sequence="3"
+                  parent="test_menu_root"/>
+
+        <menuitem id="estate_mail_menu"
+                  name="Estate Mail"
+                  sequence="3"
+                  parent="test_menu_root"/>
+        <menuitem id="test_kanban_2" name="Estate List" parent="test_first_level_menu" action="action_estate_list"/>
+        <!-- <menuitem id="test_model_menu_action"
+                  name="Estate Properties"
+                  parent="test_first_level_menu"
+                  action="action_estate"/> -->
+
+        <menuitem id="test_offer_menu"
+                    name="Offer"
+                    parent="estate_mail_menu"
+                    action="action_offer"/>
+
+        <menuitem id="test_type_menu"
+                    name="Type"
+                    parent="test_first_level_menu"
+                    action="action_type"/>
+
+        <menuitem id="test_res_users"
+                    name="Res users"
+                    parent="estate_mail_menu"
+                    action="action_users"/>
+        
+        <menuitem id="test_kanban"
+                    name="kanban Estate"
+                    parent="estate_mail_menu"
+                    action="action_kanban_estate"/>
+
+        
+    </data>
+</odoo>

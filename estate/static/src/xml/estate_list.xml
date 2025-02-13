@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="test.EstateList">
+        <div class="oe_container">
+            <h2>Estate List</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Living Area</th>
+                        <th>Garden Area</th>
+                        <th>Total Area</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.estates" t-as="estate" t-key="estate.id">
+                        <tr>
+                            <td t-esc="estate.name"/>
+                            <td t-esc="estate.living_area"/>
+                            <td t-esc="estate.garden_area"/>
+                            <td t-esc="estate.total_area"/>
+                            <td t-esc="estate.state"/>
+                        </tr>
+                    </t>
+
+                </tbody>
+            </table>
+        </div>
+    </t>
+</templates>
